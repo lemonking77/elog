@@ -24,7 +24,7 @@
 
 #define MODULE_NAME_MAX		8
 #define INVALID_MD_INDEX    0xFF
-#define DEF_OUTPUT_NAME     "TEMR"
+#define DEF_OUTPUT_NAME     "TERM"
 
 
 typedef struct {
