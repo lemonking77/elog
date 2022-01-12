@@ -106,16 +106,17 @@ int __v_printf(int index, int level, const char *file, int line, const char *fmt
     
     va_list ap;
     va_start(ap, fmt);
-
+    
+    CHAR_T *pfile = (strrchr(file, '/') ? (strrchr(file, '/') + 1): file);
     #ifdef LOG_USE_COLOR
     cnt = snprintf(elog_mgr.buff, elog_mgr.len, "[%s%s %s\x1b[0m][%s:%d] ", 
-                    level_colors[level], elog->name, level_strs[level], file, line);
+                    level_colors[level], elog->name, level_strs[level], pfile, line);
     if (cnt <= 0 ) {
         return -1;
     }
     #else
     cnt = snprintf(elog_mgr.buff, elog_mgr.len, "[%s %s][%s:%d] ", 
-                    elog->name, level_strs[elog->level], file, line);
+                    elog->name, level_strs[elog->level], pfile, line);
     if (cnt <= 0 ) {
         return -1;
     }
